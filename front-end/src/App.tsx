@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 });
 function App() {
   const classes = useStyles();
-  return <div className="App"></div>;
+  return <div className="App">testing</div>;
 }
 
 export default App;

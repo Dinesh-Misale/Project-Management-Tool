@@ -7,7 +7,7 @@ const userSlice = createSlice({
   },
   reducers: {
     userSagaSuccess(state, action) {
-      state.user = action.payload.userData;
+      state.user = action.payload?.response;
     },
   },
 });

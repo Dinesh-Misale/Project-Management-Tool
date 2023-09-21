@@ -1,19 +1,26 @@
 import { put, takeLatest, call, takeEvery } from "redux-saga/effects";
 import { userSagaSuccess } from "../slices/user.slice";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import Axios from "../api/api.config";
 
-const makeCall = (): {} => {
-  const response = axios.get("https://localhost:5001/getUserData");
-  return response;
-};
-
-function* userSaga(): any {
-  const response = yield call(makeCall);
-  yield put(userSagaSuccess({ payload: response }));
+function* userSaga(payload: any) {
+  console.log("id", payload);
+  try {
+    const response: AxiosResponse<any> = yield call(
+      Axios.get,
+      `/userInfo?uid=${payload?.userid}`
+    );
+    if (response?.data) {
+      yield put(userSagaSuccess({ response: response?.data }));
+      return;
+    }
+  } catch (err) {
+    console.log("err", err);
+  }
 }
 
 function* tasksSaga() {
-  yield takeEvery("makeCall", userSaga);
+  yield takeEvery("getUserInfo", userSaga);
 }
 
 export default tasksSaga;

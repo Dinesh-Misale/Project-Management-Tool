@@ -1,7 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
-  "homepage": "https://Dinesh-Misale.github.io/Project-Management-Tool",
+  "homepage": "https://Dinesh-Misale.github.io/Project-Management-Tool/login",
   "private": true,
   "proxy": "http://localhost:3002",
   "dependencies": {

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,21 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.test {
+  color: red;
+  opacity: 1;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+  animation-duration: 500ms;
 }

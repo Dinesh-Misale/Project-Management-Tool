@@ -1,5 +1,5 @@
 import "./App.css";
-import { makeStyles } from "@mui/styles";
+import { ThemeProvider, makeStyles } from "@mui/styles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./app/page/login";
 import Register from "./app/page/register";
@@ -7,6 +7,9 @@ import Dashboard from "./app/page/dashboard";
 import Navbar from "./app/components/navbar";
 import { useDispatch } from "react-redux";
 import Project from "./app/page/Project";
+import { Theme } from "@mui/material";
+import { useEffect } from "react";
+import NewPage from "./app/page/newPage";
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +22,6 @@ function App() {
   const formattedData = JSON.parse(userData);
   const access_content = formattedData?.access_content;
   const refreshToken = localStorage?.getItem("refreshtoken");
-
   if (access_content?.tokenExpiresIn) {
     setInterval(() => {
       dispatch({
@@ -38,6 +40,7 @@ function App() {
           <Route path="/" element={<h1>home page</h1>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
+          <Route path="/new" element={<NewPage />} />
           <Route
             path="/dashboard"
             element={

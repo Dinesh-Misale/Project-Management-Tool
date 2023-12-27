@@ -190,7 +190,7 @@ const Dashboard = () => {
         org_id: userData?.user?.org_id,
       },
     });
-  }, []);
+  }, [dispatch, userData?.user?.emp_id, userData?.user?.org_id]);
   return (
     <>
       <Box

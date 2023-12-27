@@ -4,13 +4,14 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import TaskStateCard from "../components/taskStateCards";
-import Summary from "../components/summary";
+import TaskStateCard from "../components/board/taskStateCards";
+import Summary from "../components/board/summary";
+import Board from "../components/board/board";
 
 const useStyle = makeStyles({
   root: {
     width: "100%",
-    margin: "20px 0 0 40px",
+    margin: "20px 0 0 2em",
   },
   container: {
     height: "100%",
@@ -29,7 +30,7 @@ function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, classes, ...other } = props;
 
   return (
-    <div
+    <Box
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -42,7 +43,7 @@ function CustomTabPanel(props: TabPanelProps) {
           <Typography>{children}</Typography>
         </Box>
       )}
-    </div>
+    </Box>
   );
 }
 
@@ -60,8 +61,12 @@ const Project = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const onDragEnd = () => {
+    console.log("done");
+  };
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} sx={{ marginLeft: { xs: 0, md: "2em" } }}>
       <Box
         sx={{
           borderBottom: 1,
@@ -83,7 +88,9 @@ const Project = () => {
         <Summary />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        {/* <DragDropContext onDragEnd={onDragEnd}> */}
+        <Board />
+        {/* </DragDropContext> */}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three

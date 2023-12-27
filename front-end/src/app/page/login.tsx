@@ -12,6 +12,7 @@ import Axios from "../api/api.config";
 import { useNavigate } from "react-router";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -145,7 +146,9 @@ const Login = () => {
 
   const apiFun = async () => {
     try {
-      const response = await Axios.post("/login", { data: login });
+      const response = await Axios.post("/login", {
+        data: login,
+      });
       return response;
     } catch (err: any) {
       setOpen(true);
@@ -165,6 +168,9 @@ const Login = () => {
         },
         user: response?.data?.user,
       };
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.accessToken}`;
       window.localStorage.setItem("userData", JSON.stringify(obj));
       localStorage.setItem("refreshtoken", response?.data?.refreshToken);
       dispatch({ type: "getUserInfo", userid: obj?.user?.emp_id });

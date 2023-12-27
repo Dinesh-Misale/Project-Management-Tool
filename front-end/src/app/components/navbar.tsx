@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,8 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import IconButton from "@mui/material/IconButton";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -34,6 +36,7 @@ const useStyles = makeStyles(() => ({
     height: "100%",
     display: "flex",
     alignItems: "center",
+    overflowX: "auto",
     // marginLeft: "10px",
     // justifyContent: "space-around",
     // background: "red",
@@ -53,6 +56,7 @@ const useStyles = makeStyles(() => ({
     color: "white",
     border: "none",
     outline: "none",
+    textAlign: "left",
     "&.active": {
       color: "#279EFF",
       borderBottom: "5px solid #279EFF",
@@ -75,14 +79,17 @@ const useStyles = makeStyles(() => ({
   body: {
     height: "84vh",
     width: "100%",
-    overflow: "hidden",
+    overflow: "auto",
   },
 }));
 
 const Navbar = ({ children, customStyle, title }: any) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const showNavbar = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [openMenu, setOpenMenu] = useState(false);
   let path: any = useLocation();
   path = path.pathname?.split("/");
 
@@ -135,54 +142,95 @@ const Navbar = ({ children, customStyle, title }: any) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const Links = () => {
+    return (
+      <>
+        <button id="dashboard" className={classes.buttons}>
+          <span
+            className={classes.span}
+            onClick={() => handleNavigation("/dashboard")}
+          >
+            Dashboardd
+          </span>
+        </button>
+        <button id="projects" className={classes.buttons}>
+          <span
+            className={classes.span}
+            onClick={() => handleNavigation("/projects")}
+          >
+            Projects
+          </span>
+        </button>
+        <button id="plan" className={classes.buttons}>
+          <span
+            className={classes.span}
+            onClick={() => handleNavigation("/plan")}
+          >
+            Plan
+          </span>
+        </button>
+        <button id="teams" className={classes.buttons}>
+          <span
+            className={classes.span}
+            onClick={() => handleNavigation("/teams")}
+          >
+            Teams
+          </span>
+        </button>
+        <button id="board" className={classes.buttons}>
+          <span
+            className={classes.span}
+            onClick={() => handleNavigation("/board")}
+          >
+            Board
+          </span>
+        </button>
+        <button className={classes.buttons}>
+          <span className={classes.span}>Create</span>
+        </button>
+      </>
+    );
+  };
+
   return (
     <div className={classes.root}>
       <nav className={classes.navBar}>
         <section className={classes.navigationSection}>
+          {showNavbar && (
+            <>
+              <Button onClick={() => setOpenMenu(true)}>open</Button>
+              <Drawer
+                // anchor={anchor}
+                open={openMenu}
+                onClose={() => setOpenMenu(false)}
+              >
+                <Box
+                  role="presentation"
+                  onClick={() => setOpenMenu(false)}
+                  onKeyDown={() => setOpenMenu(false)}
+                  sx={{
+                    height: "100%",
+                    background: "#1D2125",
+                    width: "200px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      height: "auto",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      fontSize: "100px",
+                    }}
+                  >
+                    {Links()}
+                  </Box>
+                </Box>
+              </Drawer>
+            </>
+          )}
           <img src="#" alt="logo" style={{ margin: "0 20px 0" }} />
-          <button id="dashboard" className={classes.buttons}>
-            <span
-              className={classes.span}
-              onClick={() => handleNavigation("/dashboard")}
-            >
-              Dashboard
-            </span>
-          </button>
-          <button id="projects" className={classes.buttons}>
-            <span
-              className={classes.span}
-              onClick={() => handleNavigation("/projects")}
-            >
-              Projects
-            </span>
-          </button>
-          <button id="plan" className={classes.buttons}>
-            <span
-              className={classes.span}
-              onClick={() => handleNavigation("/plan")}
-            >
-              Plan
-            </span>
-          </button>
-          <button id="teams" className={classes.buttons}>
-            <span
-              className={classes.span}
-              onClick={() => handleNavigation("/teams")}
-            >
-              Teams
-            </span>
-          </button>
-          <button id="board" className={classes.buttons}>
-            <span
-              className={classes.span}
-              onClick={() => handleNavigation("/board")}
-            >
-              Board
-            </span>
-          </button>
-          <button className={classes.buttons}>
-            <span className={classes.span}>Create</span>
-          </button>
+          {!showNavbar && Links()}
         </section>
         <section className={classes.settingSection}>
           <SettingsIcon fontSize="small" />
@@ -267,9 +315,12 @@ const Navbar = ({ children, customStyle, title }: any) => {
           </h2>
         </div>
       )}
-      <div className={classes.body} style={customStyle}>
+      <Box
+        className={classes.body}
+        sx={{ display: { sm: "block", md: customStyle.display } }}
+      >
         {children}
-      </div>
+      </Box>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import Axios from "../api/api.config";
 import { AxiosResponse } from "axios";
 import { getTasksListSuccess } from "../slices/dashboard.slice";
@@ -22,7 +22,7 @@ function* dashboardGetEmpTaskList(action: any) {
 }
 
 function* dashboardListerSaga() {
-  yield takeEvery("get_task_list", dashboardGetEmpTaskList);
+  yield takeLatest("get_task_list", dashboardGetEmpTaskList);
 }
 
 export default dashboardListerSaga;

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Project-Management-Tool/static/css/main.64f8f9b3.css",
+    "main.js": "/Project-Management-Tool/static/js/main.9b524238.js",
+    "static/js/787.498e3191.chunk.js": "/Project-Management-Tool/static/js/787.498e3191.chunk.js",
+    "static/media/register.image.png": "/Project-Management-Tool/static/media/register.image.31cd36f2e73485f6a458.png",
+    "static/media/register.image(2).png": "/Project-Management-Tool/static/media/register.image(2).be85d7c022b202f60e51.png",
+    "static/media/backgroundmain.svg": "/Project-Management-Tool/static/media/backgroundmain.23750a26bd1c55bf217112ded5ed906a.svg",
+    "index.html": "/Project-Management-Tool/index.html",
+    "main.64f8f9b3.css.map": "/Project-Management-Tool/static/css/main.64f8f9b3.css.map",
+    "main.9b524238.js.map": "/Project-Management-Tool/static/js/main.9b524238.js.map",
+    "787.498e3191.chunk.js.map": "/Project-Management-Tool/static/js/787.498e3191.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64f8f9b3.css",
+    "static/js/main.9b524238.js"
+  ]
+}

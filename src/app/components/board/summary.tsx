@@ -1,10 +1,7 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
-import { Box } from "@mui/material";
+import { makeStyles } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TaskStateCard from "./taskStateCards";
-import Donut from "../charts/donut";
-import StatusOverview from "./statusOverview";
 
 const useStyles = makeStyles({
   root: {
@@ -40,9 +37,9 @@ const statusOverview = [
 ];
 
 const Summary = () => {
-  const classes = useStyles();
+  const { root } = useStyles;
   return (
-    <div className={classes.root}>
+    <div className={root}>
       <Grid container spacing={2}>
         {TempData?.map((e: { count: number; type: string }) => {
           return (

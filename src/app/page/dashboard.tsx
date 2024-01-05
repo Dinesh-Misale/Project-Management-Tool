@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const obj = [
@@ -173,7 +173,17 @@ const useStyles = makeStyles({
 });
 
 const Dashboard = () => {
-  const classes = useStyles();
+  const {
+    outerContainerStyle,
+    commonStyles,
+    cardStyle,
+    initials,
+    activityCards,
+    taskContainer,
+    activityContainer,
+    activityTable,
+    taskTable,
+  } = useStyles;
   const dispatch = useDispatch();
   const dashboardData = useSelector((state: any) => state?.dashboardSlice);
   // console.log(dashboardData);
@@ -194,7 +204,7 @@ const Dashboard = () => {
   return (
     <>
       <Box
-        className={`${classes.activityContainer} ${classes.outerContainerStyle} ${classes.commonStyles}`}
+        className={`${activityContainer} ${outerContainerStyle} ${commonStyles}`}
       >
         <Box style={{ display: "flex", margin: "20px" }}>
           <h4 style={{ fontSize: "17px", margin: 0, flex: 1 }}>
@@ -209,14 +219,14 @@ const Dashboard = () => {
             />
           </Box>
         </Box>
-        <Box className={classes.activityTable}>
+        <Box className={activityTable}>
           {obj.map((e, index) => {
             let initials: any = e?.assignee.split(" ");
             initials = initials.map((element: any) => element.slice(0, 1));
             initials = initials.join("");
             return (
-              <Box className={classes.activityCards} key={index}>
-                <Box className={classes.initials}>
+              <Box className={activityCards} key={index}>
+                <Box className={initials}>
                   <Box
                     style={{
                       display: "flex",
@@ -260,10 +270,10 @@ const Dashboard = () => {
         </Box>
       </Box>
       <Box
-        className={`${classes.taskContainer} ${classes.outerContainerStyle}`}
+        className={`${taskContainer} ${outerContainerStyle}`}
         sx={{ background: "transparent" }}
       >
-        <Box className={`${classes.cardStyle} ${classes.commonStyles}`}>
+        <Box className={`${cardStyle} ${commonStyles}`}>
           <Box sx={{ display: "flex", width: "100%" }}>
             <h4 style={{ margin: "15px 0 0 20px", flex: 1, fontSize: "16px" }}>
               Assigned to Me
@@ -307,7 +317,7 @@ const Dashboard = () => {
                   height: "18vh",
                   overflowY: "scroll",
                 }}
-                className={classes.taskTable}
+                className={taskTable}
               >
                 {dashboardData?.taskLoadingState && (
                   <span
@@ -343,7 +353,7 @@ const Dashboard = () => {
             </table>
           </Box>
         </Box>
-        <Box className={`${classes.cardStyle} ${classes.commonStyles}`}></Box>
+        <Box className={`${cardStyle} ${commonStyles}`}></Box>
       </Box>
     </>
   );

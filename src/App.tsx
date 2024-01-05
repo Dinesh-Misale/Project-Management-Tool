@@ -1,5 +1,5 @@
 import "./App.css";
-import { ThemeProvider, makeStyles } from "@mui/styles";
+
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./app/page/login";
 import Register from "./app/page/register";
@@ -7,15 +7,8 @@ import Dashboard from "./app/page/dashboard";
 import Navbar from "./app/components/navbar";
 import { useDispatch } from "react-redux";
 import Project from "./app/page/Project";
-import { Theme } from "@mui/material";
-import { useEffect } from "react";
 import NewPage from "./app/page/newPage";
 
-const useStyles = makeStyles({
-  root: {
-    color: "red",
-  },
-});
 function App() {
   const dispatch = useDispatch();
   const userData: any = localStorage?.getItem("userData");
@@ -30,7 +23,6 @@ function App() {
       });
     }, access_content?.tokenExpiresIn - 120000);
   }
-  const classes = useStyles();
   return (
     <div>
       <Router>

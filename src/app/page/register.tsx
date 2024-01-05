@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import src1 from "../assets/register.image.png";
 import src2 from "../assets/register.image(2).png";
 import { Box, Button, CircularProgress, TextField } from "@mui/material";
@@ -52,7 +52,14 @@ const useStyles = makeStyles({
 });
 
 const Register = () => {
-  const classes = useStyles();
+  const {
+    root,
+    image,
+    imageContainer,
+    container,
+    loadingState,
+    formContainer,
+  } = useStyles;
   const [registerObj, setRegisterObj] = useState({
     orgName: "",
     orgEmail: "",
@@ -112,8 +119,8 @@ const Register = () => {
     // console.log();
   };
   return (
-    <div className={classes.root}>
-      <div className={`${classes.container} ${classes.imageContainer}`}>
+    <div className={root}>
+      <div className={`${container} ${imageContainer}`}>
         <h1
           style={{
             // color: "white",
@@ -125,8 +132,8 @@ const Register = () => {
           pro<span style={{ color: "#337CCF" }}>task</span>
         </h1>
         <div style={{ marginTop: "100px" }}>
-          <img className={classes.image} src={src1} alt="img" />
-          <img className={classes.image} src={src2} alt="img" />
+          <img className={image} src={src1} alt="img" />
+          <img className={image} src={src2} alt="img" />
         </div>
         <p
           style={{
@@ -145,8 +152,8 @@ const Register = () => {
           effortlessly. But that's not all, Register to know more.
         </p>
       </div>
-      <div className={classes.container}>
-        <div className={classes.formContainer}>
+      <div className={container}>
+        <div className={formContainer}>
           <p>START FOR FREE</p>
           <h1 style={{ margin: "10px 0" }}>
             Sign up to pro<span style={{ color: "#337CCF" }}>task</span>
@@ -198,7 +205,7 @@ const Register = () => {
         </div>
       </div>
       {loading && (
-        <div className={classes.loadingState}>
+        <div className={loadingState}>
           <CircularProgress
             sx={{
               position: "absolute",

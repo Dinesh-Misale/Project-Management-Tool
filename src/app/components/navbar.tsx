@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -84,7 +84,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Navbar = ({ children, customStyle, title }: any) => {
-  const classes = useStyles();
+  const {
+    root,
+    buttons,
+    span,
+    navBar,
+    navigationSection,
+    settingSection,
+    body,
+  } = useStyles;
   const theme = useTheme();
   const showNavbar = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
@@ -145,57 +153,42 @@ const Navbar = ({ children, customStyle, title }: any) => {
   const Links = () => {
     return (
       <>
-        <button id="dashboard" className={classes.buttons}>
-          <span
-            className={classes.span}
-            onClick={() => handleNavigation("/dashboard")}
-          >
+        <button id="dashboard" className={buttons}>
+          <span className={span} onClick={() => handleNavigation("/dashboard")}>
             Dashboardd
           </span>
         </button>
-        <button id="projects" className={classes.buttons}>
-          <span
-            className={classes.span}
-            onClick={() => handleNavigation("/projects")}
-          >
+        <button id="projects" className={buttons}>
+          <span className={span} onClick={() => handleNavigation("/projects")}>
             Projects
           </span>
         </button>
-        <button id="plan" className={classes.buttons}>
-          <span
-            className={classes.span}
-            onClick={() => handleNavigation("/plan")}
-          >
+        <button id="plan" className={buttons}>
+          <span className={span} onClick={() => handleNavigation("/plan")}>
             Plan
           </span>
         </button>
-        <button id="teams" className={classes.buttons}>
-          <span
-            className={classes.span}
-            onClick={() => handleNavigation("/teams")}
-          >
+        <button id="teams" className={buttons}>
+          <span className={span} onClick={() => handleNavigation("/teams")}>
             Teams
           </span>
         </button>
-        <button id="board" className={classes.buttons}>
-          <span
-            className={classes.span}
-            onClick={() => handleNavigation("/board")}
-          >
+        <button id="board" className={buttons}>
+          <span className={span} onClick={() => handleNavigation("/board")}>
             Board
           </span>
         </button>
-        <button className={classes.buttons}>
-          <span className={classes.span}>Create</span>
+        <button className={buttons}>
+          <span className={span}>Create</span>
         </button>
       </>
     );
   };
 
   return (
-    <div className={classes.root}>
-      <nav className={classes.navBar}>
-        <section className={classes.navigationSection}>
+    <div className={root}>
+      <nav className={navBar}>
+        <section className={navigationSection}>
           {showNavbar && (
             <>
               <Button onClick={() => setOpenMenu(true)}>open</Button>
@@ -232,7 +225,7 @@ const Navbar = ({ children, customStyle, title }: any) => {
           <img src="#" alt="logo" style={{ margin: "0 20px 0" }} />
           {!showNavbar && Links()}
         </section>
-        <section className={classes.settingSection}>
+        <section className={settingSection}>
           <SettingsIcon fontSize="small" />
           <Box>
             <IconButton
@@ -316,7 +309,7 @@ const Navbar = ({ children, customStyle, title }: any) => {
         </div>
       )}
       <Box
-        className={classes.body}
+        className={body}
         sx={{ display: { sm: "block", md: customStyle.display } }}
       >
         {children}

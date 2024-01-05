@@ -4,7 +4,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import EditIcon from "@mui/icons-material/Edit";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 
 const useStyle = makeStyles({
   root: {
@@ -37,14 +37,14 @@ interface TaskStateProps {
 }
 
 const TaskStateCard = ({ type, count }: TaskStateProps) => {
-  const classes = useStyle();
+  const { iconStyle, root, icon, text } = useStyle;
   const RenderIcon = () => {
     switch (type) {
       case "done":
         return (
           <CheckCircleIcon
             fontSize="medium"
-            className={classes.iconStyle}
+            className={iconStyle}
             sx={{
               color: count > 0 ? "#279EFF" : "",
               background: count > 0 ? "#AED2FF" : "",
@@ -56,7 +56,7 @@ const TaskStateCard = ({ type, count }: TaskStateProps) => {
         return (
           <EditIcon
             fontSize="medium"
-            className={classes.iconStyle}
+            className={iconStyle}
             sx={{
               color: count > 0 ? "#9D44C0" : "",
               background: count > 0 ? "#9D76C1" : "",
@@ -68,7 +68,7 @@ const TaskStateCard = ({ type, count }: TaskStateProps) => {
         return (
           <AddCircleIcon
             fontSize="medium"
-            className={classes.iconStyle}
+            className={iconStyle}
             sx={{
               color: count > 0 ? "#35A29F" : "",
               background: count > 0 ? "#F4EEEE" : "",
@@ -80,7 +80,7 @@ const TaskStateCard = ({ type, count }: TaskStateProps) => {
         return (
           <CalendarMonthIcon
             fontSize="medium"
-            className={classes.iconStyle}
+            className={iconStyle}
             sx={{
               color: count > 0 ? "#BB2525" : "",
               background: count > 0 ? "#FF6969" : "",
@@ -114,9 +114,9 @@ const TaskStateCard = ({ type, count }: TaskStateProps) => {
     }
   };
   return (
-    <Box className={classes.root}>
-      <Box className={classes.icon}>{RenderIcon()}</Box>
-      <Box className={classes.text}>
+    <Box className={root}>
+      <Box className={icon}>{RenderIcon()}</Box>
+      <Box className={text}>
         <p style={{ margin: 0 }}>
           {count} {renderText()}
         </p>

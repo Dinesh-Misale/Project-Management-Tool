@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { makeStyles } from "@mui/styles";
+import React, { useRef, useState } from "react";
+import { makeStyles } from "@mui/material";
 
 const useStyles = makeStyles({
   container: {
@@ -76,7 +76,8 @@ const arr = [
 
 const NewPage = () => {
   // State to hold the text content
-  const classes = useStyles();
+  const { container, roundedImage, imageContainer, newStyle, loaderActive } =
+    useStyles;
   const [displayText, setDisplayText] = useState<string>("");
   // const [stringCompleted, setStringCompleted] = useState(false);
   const [valid, setValid] = useState(false);
@@ -139,7 +140,7 @@ const NewPage = () => {
 
   const someFunction = () => {
     const ele: any = document.getElementById("image");
-    ele.classList.add(classes.newStyle);
+    ele.classList.add(newStyle);
   };
 
   const handleLoading = () => {};
@@ -186,9 +187,9 @@ const NewPage = () => {
   return (
     <div>
       <div id="loader"></div>
-      <div className={classes.container}>
-        <div className={classes.imageContainer} id="image-container">
-          <div className={classes.roundedImage} id="image">
+      <div className={container}>
+        <div className={imageContainer} id="image-container">
+          <div className={roundedImage} id="image">
             testing value is
           </div>
         </div>

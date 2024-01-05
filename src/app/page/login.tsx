@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import { Box, Autocomplete } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -107,7 +106,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const classes = useStyles();
+  const { root, innercontainer, inputFields, heading, button, icon } =
+    useStyles;
   const [orgList, setOrgList] = useState([]);
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -183,9 +183,9 @@ const Login = () => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Box className={classes.innercontainer}>
-        <h1 className={classes.heading}>ProTask</h1>
+    <Box className={root}>
+      <Box className={innercontainer}>
+        <h1 className={heading}>ProTask</h1>
         <Autocomplete
           // blurOnSelect={true}
           sx={{
@@ -215,18 +215,18 @@ const Login = () => {
           renderInput={(params) => (
             <div ref={params.InputProps.ref} style={{ position: "relative" }}>
               <input type="text" {...params.inputProps} />
-              <ArrowDropDownIcon className={classes.icon} />
+              <ArrowDropDownIcon className={icon} />
             </div>
           )}
         />
         <input
-          className={classes.inputFields}
+          className={inputFields}
           onChange={(e) => handleChange(e, "input", "email")}
           placeholder="Email"
           type="email"
         />
         <input
-          className={classes.inputFields}
+          className={inputFields}
           onChange={(e) => handleChange(e, "input", "password")}
           placeholder="Password"
           type="password"
@@ -237,7 +237,7 @@ const Login = () => {
             Register For Free
           </a>
         </p>
-        <button className={classes.button} onClick={handleSubmit}>
+        <button className={button} onClick={handleSubmit}>
           Login
         </button>
       </Box>

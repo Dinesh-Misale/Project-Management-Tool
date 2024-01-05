@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import { Box } from "@mui/material";
 import Donut from "../charts/donut";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -29,7 +29,7 @@ interface statusOverviewProps {
 }
 
 const StatusOverview = (props: statusOverviewProps) => {
-  const classes = useStyles();
+  const { root, container } = useStyles;
   const customList = (element: any) => {
     return (
       <p style={{ margin: 0, padding: 0 }}>
@@ -40,9 +40,9 @@ const StatusOverview = (props: statusOverviewProps) => {
     );
   };
   return (
-    <Box className={classes.root}>
+    <Box className={root}>
       <h3 style={{ margin: 0, paddingLeft: "20px" }}>Status Overview</h3>
-      <Box className={classes.container}>
+      <Box className={container}>
         <Box style={{ flex: 1, alignSelf: "center" }}>
           <Donut data={props?.data} />
         </Box>

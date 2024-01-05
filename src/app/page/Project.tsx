@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -55,7 +55,7 @@ function a11yProps(index: number) {
 }
 
 const Project = () => {
-  const classes = useStyle();
+  const { root, container } = useStyle;
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -66,7 +66,7 @@ const Project = () => {
     console.log("done");
   };
   return (
-    <Box className={classes.root} sx={{ marginLeft: { xs: 0, md: "2em" } }}>
+    <Box className={root} sx={{ marginLeft: { xs: 0, md: "2em" } }}>
       <Box
         sx={{
           borderBottom: 1,
@@ -84,7 +84,7 @@ const Project = () => {
           <Tab label="Calendar" {...a11yProps(2)} sx={{ color: "white" }} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0} classes={classes}>
+      <CustomTabPanel value={value} index={0}>
         <Summary />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>

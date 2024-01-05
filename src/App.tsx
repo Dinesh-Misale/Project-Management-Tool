@@ -1,6 +1,6 @@
 import "./App.css";
 import { ThemeProvider, makeStyles } from "@mui/styles";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./app/page/login";
 import Register from "./app/page/register";
 import Dashboard from "./app/page/dashboard";
@@ -38,7 +38,7 @@ function App() {
         <Routes>
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/" element={<h1>home page</h1>} />
-          <Route path="/login" element={<Login />} />
+          <Route path="#login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
           <Route path="/new" element={<NewPage />} />
           <Route

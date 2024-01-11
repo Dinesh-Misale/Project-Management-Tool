@@ -99,13 +99,13 @@ const Register = () => {
         </p>
       </div>
       <div className="registerContainer">
-        <div className="formContainer">
+        <div className="formcontainer">
           <p>START FOR FREE</p>
           <h1 style={{ margin: "10px 0" }}>
             Sign up to pro<span style={{ color: "#337CCF" }}>task</span>
           </h1>
           <span>
-            already a member ? <a href="/login">login</a>{" "}
+            already a member ? <a href="/#/login">login</a>{" "}
           </span>
           <Box
             sx={{

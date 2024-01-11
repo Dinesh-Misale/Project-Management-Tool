@@ -7,7 +7,7 @@ const getHeader = () => {
 };
 
 const Axios = axios.create({
-  // baseURL: "http://localhost:3002",
+  baseURL: "http://localhost:3002",
   headers: {
     Authorization: `Bearer ${getHeader()}`,
     "Content-Type": "application/json",

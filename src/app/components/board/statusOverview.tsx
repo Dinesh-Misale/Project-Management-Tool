@@ -1,22 +1,7 @@
 import React from "react";
-import { makeStyles } from "@mui/material";
 import { Box } from "@mui/material";
 import Donut from "../charts/donut";
 import CircleIcon from "@mui/icons-material/Circle";
-
-const useStyles = makeStyles({
-  root: {
-    // display: "flex",
-    height: "400px",
-    background: "#22272B",
-    borderRadius: "5px",
-  },
-  container: {
-    display: "flex",
-    height: "100%",
-    // alignSelf: "center",
-  },
-});
 
 type dataProps = {
   id: number;
@@ -29,7 +14,6 @@ interface statusOverviewProps {
 }
 
 const StatusOverview = (props: statusOverviewProps) => {
-  const { root, container } = useStyles;
   const customList = (element: any) => {
     return (
       <p style={{ margin: 0, padding: 0 }}>
@@ -40,9 +24,9 @@ const StatusOverview = (props: statusOverviewProps) => {
     );
   };
   return (
-    <Box className={root}>
+    <Box className="statusOverContainer">
       <h3 style={{ margin: 0, paddingLeft: "20px" }}>Status Overview</h3>
-      <Box className={container}>
+      <Box className="container">
         <Box style={{ flex: 1, alignSelf: "center" }}>
           <Donut data={props?.data} />
         </Box>

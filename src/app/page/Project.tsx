@@ -1,23 +1,10 @@
-import react, { useState } from "react";
-import { makeStyles } from "@mui/material";
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import TaskStateCard from "../components/board/taskStateCards";
 import Summary from "../components/board/summary";
 import Board from "../components/board/board";
-
-const useStyle = makeStyles({
-  root: {
-    width: "100%",
-    margin: "20px 0 0 2em",
-  },
-  container: {
-    height: "100%",
-    overflowY: "auto",
-  },
-});
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -35,7 +22,7 @@ function CustomTabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      className={classes?.container}
+      sx={{ height: "100%", overflowY: "auto" }}
       {...other}
     >
       {value === index && (
@@ -55,7 +42,6 @@ function a11yProps(index: number) {
 }
 
 const Project = () => {
-  const { root, container } = useStyle;
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -66,7 +52,13 @@ const Project = () => {
     console.log("done");
   };
   return (
-    <Box className={root} sx={{ marginLeft: { xs: 0, md: "2em" } }}>
+    <Box
+      sx={{
+        marginLeft: { xs: 0, md: "2em" },
+        width: "100%",
+        margin: "20px 0 0 2em",
+      }}
+    >
       <Box
         sx={{
           borderBottom: 1,

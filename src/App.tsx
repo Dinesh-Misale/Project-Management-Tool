@@ -7,7 +7,6 @@ import Dashboard from "./app/page/dashboard";
 import Navbar from "./app/components/navbar";
 import { useDispatch } from "react-redux";
 import Project from "./app/page/Project";
-import NewPage from "./app/page/newPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +29,9 @@ function App() {
         <Routes>
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/" element={<h1>home page</h1>} />
-          <Route path="#login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
-          <Route path="/new" element={<NewPage />} />
+
           <Route
             path="/dashboard"
             element={

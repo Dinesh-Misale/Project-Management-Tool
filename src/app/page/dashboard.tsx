@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { makeStyles } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -90,100 +89,7 @@ const obj = [
   },
 ];
 
-const useStyles = makeStyles({
-  outerContainerStyle: {
-    flex: 1,
-    background: "#282A3A",
-    height: "85%",
-    // height: "90%",
-    // maxHeight: "100%",
-    overflow: "auto",
-    "&::-webkit-scrollbar": {
-      width: "2px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: "lightgray",
-    },
-    "&::-webkit-scrollbar-track": {
-      margin: "10px 0 10px",
-    },
-  },
-  commonStyles: {
-    borderTop: "4px solid #279EFF",
-    background: "#282A3A",
-    borderRadius: "5px",
-    overflow: "hidden",
-    boxShadow: "2px 2px  black",
-  },
-  cardStyle: {
-    height: "250px",
-    // maxHeight: "300px",
-    // "&::-webkit-scrollbar": {
-    //   width: "2px",
-    // },
-    // "&::-webkit-scrollbar-thumb": {
-    //   background: "lightgray",
-    // },
-    // "&::-webkit-scrollbar-track": {
-    //   margin: "10px 0 10px",
-    // },
-    marginBottom: "20px",
-  },
-  taskTable: {
-    maxHeight: "300px",
-    "&::-webkit-scrollbar": {
-      width: "2px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: "lightgray",
-    },
-    "&::-webkit-scrollbar-track": {
-      margin: "10px 0 10px",
-    },
-  },
-  activityTable: {
-    overflowY: "auto",
-    height: "85%",
-    "&::-webkit-scrollbar": {
-      width: "2px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: "lightgray",
-    },
-    "&::-webkit-scrollbar-track": {
-      margin: "10px 0 10px",
-    },
-  },
-  activityContainer: {
-    margin: "30px 10px 0 40px",
-  },
-  taskContainer: { margin: "30px 20px 0" },
-  activityCards: {
-    display: "flex",
-    widht: "100%",
-    minHeight: "100px",
-    height: "auto",
-    borderTop: "1px solid lightgrey",
-  },
-  initials: {
-    flex: 0.3,
-    // : "center",
-    marginTop: "10px",
-  },
-});
-
 const Dashboard = () => {
-  const {
-    outerContainerStyle,
-    commonStyles,
-    cardStyle,
-    initials,
-    activityCards,
-    taskContainer,
-    activityContainer,
-    activityTable,
-    taskTable,
-  } = useStyles;
   const dispatch = useDispatch();
   const dashboardData = useSelector((state: any) => state?.dashboardSlice);
   // console.log(dashboardData);
@@ -203,9 +109,7 @@ const Dashboard = () => {
   }, [dispatch, userData?.user?.emp_id, userData?.user?.org_id]);
   return (
     <>
-      <Box
-        className={`${activityContainer} ${outerContainerStyle} ${commonStyles}`}
-      >
+      <Box className="activityContainer outerContainerStyle commonStyles">
         <Box style={{ display: "flex", margin: "20px" }}>
           <h4 style={{ fontSize: "17px", margin: 0, flex: 1 }}>
             Activity Streams
@@ -219,13 +123,13 @@ const Dashboard = () => {
             />
           </Box>
         </Box>
-        <Box className={activityTable}>
+        <Box className="activityTable">
           {obj.map((e, index) => {
             let initials: any = e?.assignee.split(" ");
             initials = initials.map((element: any) => element.slice(0, 1));
             initials = initials.join("");
             return (
-              <Box className={activityCards} key={index}>
+              <Box className="activityCards" key={index}>
                 <Box className={initials}>
                   <Box
                     style={{
@@ -270,10 +174,10 @@ const Dashboard = () => {
         </Box>
       </Box>
       <Box
-        className={`${taskContainer} ${outerContainerStyle}`}
+        className="taskContainer outerContainerStyle"
         sx={{ background: "transparent" }}
       >
-        <Box className={`${cardStyle} ${commonStyles}`}>
+        <Box className="cardStyle commonStyles">
           <Box sx={{ display: "flex", width: "100%" }}>
             <h4 style={{ margin: "15px 0 0 20px", flex: 1, fontSize: "16px" }}>
               Assigned to Me
@@ -317,7 +221,7 @@ const Dashboard = () => {
                   height: "18vh",
                   overflowY: "scroll",
                 }}
-                className={taskTable}
+                className="taskTable"
               >
                 {dashboardData?.taskLoadingState && (
                   <span
@@ -353,7 +257,7 @@ const Dashboard = () => {
             </table>
           </Box>
         </Box>
-        <Box className={`${cardStyle} ${commonStyles}`}></Box>
+        <Box className="cardStyle commonStyles"></Box>
       </Box>
     </>
   );

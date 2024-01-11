@@ -1,4 +1,3 @@
-import { makeStyles } from "@mui/material";
 import src1 from "../assets/register.image.png";
 import src2 from "../assets/register.image(2).png";
 import { Box, Button, CircularProgress, TextField } from "@mui/material";
@@ -6,60 +5,7 @@ import { useState } from "react";
 import Axios from "../api/api.config";
 import { useNavigate } from "react-router";
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    width: "100%",
-    minHeight: "100vh",
-  },
-  container: {
-    flex: 1,
-    minHeight: "100vh",
-    position: "relative",
-  },
-  imageContainer: {
-    background: "#F1F6F9",
-    // display: "none",
-    "@media(min-width: 100px) and (max-width: 1000px)": {
-      display: "none",
-    },
-  },
-  image: {
-    width: "50%",
-  },
-  formContainer: {
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translateX(-50%) translateY(-50%)",
-    width: "70%",
-    height: "80%",
-    "@media(min-width: 100px) and (max-width: 1000px)": {
-      width: "90%",
-    },
-    // background: "blue",
-  },
-  loadingState: {
-    position: "absolute",
-    zIndex: 0,
-    width: "100%",
-    // flex: 2,
-    minHeight: "100vh",
-    background: "rgba(0,0,0,0.4)",
-
-    // opacity: 0.4,
-  },
-});
-
 const Register = () => {
-  const {
-    root,
-    image,
-    imageContainer,
-    container,
-    loadingState,
-    formContainer,
-  } = useStyles;
   const [registerObj, setRegisterObj] = useState({
     orgName: "",
     orgEmail: "",
@@ -119,8 +65,8 @@ const Register = () => {
     // console.log();
   };
   return (
-    <div className={root}>
-      <div className={`${container} ${imageContainer}`}>
+    <div className="registerRoot">
+      <div className="registerContainer imageContainer">
         <h1
           style={{
             // color: "white",
@@ -132,8 +78,8 @@ const Register = () => {
           pro<span style={{ color: "#337CCF" }}>task</span>
         </h1>
         <div style={{ marginTop: "100px" }}>
-          <img className={image} src={src1} alt="img" />
-          <img className={image} src={src2} alt="img" />
+          <img className="image" src={src1} alt="img" />
+          <img className="image" src={src2} alt="img" />
         </div>
         <p
           style={{
@@ -152,8 +98,8 @@ const Register = () => {
           effortlessly. But that's not all, Register to know more.
         </p>
       </div>
-      <div className={container}>
-        <div className={formContainer}>
+      <div className="registerContainer">
+        <div className="formContainer">
           <p>START FOR FREE</p>
           <h1 style={{ margin: "10px 0" }}>
             Sign up to pro<span style={{ color: "#337CCF" }}>task</span>
@@ -205,7 +151,7 @@ const Register = () => {
         </div>
       </div>
       {loading && (
-        <div className={loadingState}>
+        <div className="loadingState">
           <CircularProgress
             sx={{
               position: "absolute",

@@ -1,15 +1,6 @@
 import React from "react";
-import { makeStyles } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TaskStateCard from "./taskStateCards";
-
-const useStyles = makeStyles({
-  root: {
-    widht: "100%",
-    height: "100%",
-    // overflow: "hidden",
-  },
-});
 
 const TempData = [
   {
@@ -37,9 +28,8 @@ const statusOverview = [
 ];
 
 const Summary = () => {
-  const { root } = useStyles;
   return (
-    <div className={root}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Grid container spacing={2}>
         {TempData?.map((e: { count: number; type: string }) => {
           return (

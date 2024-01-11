@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@mui/material";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -15,84 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100%",
-    minHeight: "100vh",
-    background: "#1D2125",
-    position: "relative",
-    color: "white",
-  },
-  navBar: {
-    width: "100%",
-    height: "50px",
-    borderBottom: "1px solid #F1F6F9",
-    display: "flex",
-    // padding: "15px",
-    // boxSizing: "border-box",
-  },
-  navigationSection: {
-    flex: 2,
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    overflowX: "auto",
-    // marginLeft: "10px",
-    // justifyContent: "space-around",
-    // background: "red",
-  },
-  settingSection: {
-    flex: 1,
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    paddingRight: 10,
-    // background: "blue",
-  },
-  buttons: {
-    height: "100%",
-    background: "transparent",
-    color: "white",
-    border: "none",
-    outline: "none",
-    textAlign: "left",
-    "&.active": {
-      color: "#279EFF",
-      borderBottom: "5px solid #279EFF",
-    },
-  },
-  span: {
-    padding: "5px",
-    boxSizing: "border-box",
-    "&:hover": {
-      background: "grey",
-      boxSizing: "border-box",
-      borderRadius: "2px",
-      color: "white",
-    },
-  },
-  // active: {
-  //   borderBottom: "3px solid red",
-  //   color: "blue !important",
-  // },
-  body: {
-    height: "84vh",
-    width: "100%",
-    overflow: "auto",
-  },
-}));
-
 const Navbar = ({ children, customStyle, title }: any) => {
-  const {
-    root,
-    buttons,
-    span,
-    navBar,
-    navigationSection,
-    settingSection,
-    body,
-  } = useStyles;
   const theme = useTheme();
   const showNavbar = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
@@ -153,42 +75,42 @@ const Navbar = ({ children, customStyle, title }: any) => {
   const Links = () => {
     return (
       <>
-        <button id="dashboard" className={buttons}>
-          <span className={span} onClick={() => handleNavigation("/dashboard")}>
+        <button id="dashboard" className="buttons">
+          <span className="span" onClick={() => handleNavigation("/dashboard")}>
             Dashboardd
           </span>
         </button>
-        <button id="projects" className={buttons}>
-          <span className={span} onClick={() => handleNavigation("/projects")}>
+        <button id="projects" className="buttons">
+          <span className="span" onClick={() => handleNavigation("/projects")}>
             Projects
           </span>
         </button>
-        <button id="plan" className={buttons}>
-          <span className={span} onClick={() => handleNavigation("/plan")}>
+        <button id="plan" className="buttons">
+          <span className="span" onClick={() => handleNavigation("/plan")}>
             Plan
           </span>
         </button>
-        <button id="teams" className={buttons}>
-          <span className={span} onClick={() => handleNavigation("/teams")}>
+        <button id="teams" className="buttons">
+          <span className="span" onClick={() => handleNavigation("/teams")}>
             Teams
           </span>
         </button>
-        <button id="board" className={buttons}>
-          <span className={span} onClick={() => handleNavigation("/board")}>
+        <button id="board" className="buttons">
+          <span className="span" onClick={() => handleNavigation("/board")}>
             Board
           </span>
         </button>
-        <button className={buttons}>
-          <span className={span}>Create</span>
+        <button className="buttons">
+          <span className="span">Create</span>
         </button>
       </>
     );
   };
 
   return (
-    <div className={root}>
-      <nav className={navBar}>
-        <section className={navigationSection}>
+    <div className="root">
+      <nav className="navBar">
+        <section className="navigationSection">
           {showNavbar && (
             <>
               <Button onClick={() => setOpenMenu(true)}>open</Button>
@@ -225,7 +147,7 @@ const Navbar = ({ children, customStyle, title }: any) => {
           <img src="#" alt="logo" style={{ margin: "0 20px 0" }} />
           {!showNavbar && Links()}
         </section>
-        <section className={settingSection}>
+        <section className="settingSection">
           <SettingsIcon fontSize="small" />
           <Box>
             <IconButton
@@ -309,7 +231,7 @@ const Navbar = ({ children, customStyle, title }: any) => {
         </div>
       )}
       <Box
-        className={body}
+        className="body"
         sx={{ display: { sm: "block", md: customStyle.display } }}
       >
         {children}

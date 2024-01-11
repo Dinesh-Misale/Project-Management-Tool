@@ -76,27 +76,33 @@ const Navbar = ({ children, customStyle, title }: any) => {
     return (
       <>
         <button id="dashboard" className="buttons">
-          <span className="span" onClick={() => handleNavigation("/dashboard")}>
+          <span
+            className="span"
+            onClick={() => handleNavigation("/#/dashboard")}
+          >
             Dashboardd
           </span>
         </button>
         <button id="projects" className="buttons">
-          <span className="span" onClick={() => handleNavigation("/projects")}>
+          <span
+            className="span"
+            onClick={() => handleNavigation("/#/projects")}
+          >
             Projects
           </span>
         </button>
         <button id="plan" className="buttons">
-          <span className="span" onClick={() => handleNavigation("/plan")}>
+          <span className="span" onClick={() => handleNavigation("/#/plan")}>
             Plan
           </span>
         </button>
         <button id="teams" className="buttons">
-          <span className="span" onClick={() => handleNavigation("/teams")}>
+          <span className="span" onClick={() => handleNavigation("/#/teams")}>
             Teams
           </span>
         </button>
         <button id="board" className="buttons">
-          <span className="span" onClick={() => handleNavigation("/board")}>
+          <span className="span" onClick={() => handleNavigation("/#/board")}>
             Board
           </span>
         </button>

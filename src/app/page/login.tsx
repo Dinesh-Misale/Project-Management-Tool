@@ -146,7 +146,10 @@ const Login = () => {
         />
         <p style={{ alignSelf: "flex-start" }}>
           new here ?{" "}
-          <a href="/signin" style={{ color: "yellow", textDecoration: "none" }}>
+          <a
+            href="/#/signin"
+            style={{ color: "yellow", textDecoration: "none" }}
+          >
             Register For Free
           </a>
         </p>
